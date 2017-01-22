@@ -6,8 +6,18 @@
     <title>Care4 Visualization</title>
   </head>
   <body>
+    <main>
+      <div id="three-container"></div>
+      <div id="options-container">
+        <nav>
+          <div id="logo">CARE4</div>
+          <ul class="functionality">
+            
+          </ul>
+        </nav>
+      </div>
+    </main>
 
-    <div id="three-container"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"></script>
     <script src="js/orbitControls.js"></script>
@@ -16,19 +26,22 @@
 
     <script type="text/javascript">
 
+      const container = document.getElementById('three-container');
+      let width = container.offsetWidth;
+      let height = container.offsetHeight;
       let scene = new THREE.Scene();
-      let camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-      let width = window.innerWidth;
-      let height = window.innerHeight;
+      let camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 1000 );
+
 
       let renderer = new THREE.WebGLRenderer( { antialias: true } );
       renderer.setSize( width, height );
-      document.body.appendChild( renderer.domElement );
+
+      container.appendChild( renderer.domElement );
 
       // Resize
       window.addEventListener( 'resize', () => {
-        renderer.setSize( window.innerWidth, window.innerHeight );
-        camera.aspect = window.innerWidth / window.innerHeight;
+        renderer.setSize( container.offsetWidth, container.offsetHeight );
+        camera.aspect = container.offsetWidth / container.offsetHeight;
         camera.updateProjectionMatrix();
       } );
 
@@ -37,14 +50,25 @@
       camera.position.z = 15;
 
       let loader = new THREE.ObjectLoader();
+      let watch;
       loader.load
       (
         'model/apple-watch.json',
         ( object ) => {
-            object.position.z = 0,
+            watch = object;
+            object.position.z = 0;
+            object.rotation.y += 90 * Math.PI / 180;
             scene.add( object );
           }
       );
+
+      const planeGeom = new THREE.PlaneBufferGeometry( 3.9, 3.9, 32 );
+      let planeMat = new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'img/landing@3x.png' ), side: THREE.FrontSide } );
+      let plane = new THREE.Mesh( planeGeom, planeMat );
+      plane.position.z = 4.2;
+      plane.position.y = 0.56;
+      plane.rotation.x -= 10 * Math.PI / 180;
+      scene.add( plane );
 
       // Draw scene
       let render = () => {
