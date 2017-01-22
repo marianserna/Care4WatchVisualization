@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Care4 Visualization</title>
+  </head>
+  <body>
+
+    <div id="three-container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"></script>
+    <script src="js/orbitControls.js"></script>
+    <script src="js/JSONLoader.js"></script>
+    <script src="js/ObjectLoader.js"></script>
+
+    <script type="text/javascript">
+
+      let scene = new THREE.Scene();
+      let camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+      let width = window.innerWidth;
+      let height = window.innerHeight;
+
+      let renderer = new THREE.WebGLRenderer( { antialias: true } );
+      renderer.setSize( width, height );
+      document.body.appendChild( renderer.domElement );
+
+      // Resize
+      window.addEventListener( 'resize', () => {
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+      } );
+
+      controls = new THREE.OrbitControls( camera, renderer.domElement );
+
+      camera.position.z = 15;
+
+      let loader = new THREE.ObjectLoader();
+      loader.load
+      (
+        'model/apple-watch.json',
+        ( object ) => {
+            object.position.z = 0,
+            scene.add( object );
+          }
+      );
+
+      // Draw scene
+      let render = () => {
+        renderer.render( scene, camera );
+      };
+
+
+      // Run loop (update, render, repeat)
+      let loop = () => {
+
+        requestAnimationFrame( loop );
+
+        render();
+      };
+      loop();
+
+    </script>
+
+  </body>
+</html>
