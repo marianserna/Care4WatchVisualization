@@ -2,7 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Overpass" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+
     <title>Care4 Visualization</title>
   </head>
   <body>
@@ -12,10 +14,53 @@
         <nav>
           <div id="logo">CARE4</div>
           <ul class="functionality">
-            
+            <li>
+              <button type="button" data-name="about">ABOUT</button>
+              <p>Care4 Watch is a device designed to make Alzheimer patients feel closer to their family members.</p>
+            </li>
+            <li>
+              <button type="button" data-name="home">HOME</button>
+              <p>The watch provides a customizable interface with options adaptable to the needs of the patient.</p>
+            </li>
+            <li>
+              <button type="button" data-name="facts">REMEMBER</button>
+              <p>The caregiver may introduce facts about the patient's life for moments when he/she doesn't remember.</p>
+            </li>
+            <li>
+              <button type="button" data-name="family">FAMILY</button>
+              <p>For the patient to feel constantly connected to his/her family, pictures can be loaded into the phone.</p>
+            </li>
+            <li>
+              <button type="button" data-name="messages">MESSAGES</button>
+              <p>The patient has the possibility of sending short written and/or voice messages tho his/her loved ones.</p>
+            </li>
+            <li>
+              <button type="button" data-name="bot">ASK</button>
+              <p>A bot can be specifically tailored to the life and needs of the patient.</p>
+            </li>
+            <li>
+              <button type="button" data-name="music">MUSIC</button>
+              <p>Music has been proved to have a positive effect on people's memory. The patient can have access to a number of his/her favourite songs.</p>
+            </li>
+            <li>
+              <button type="button" data-name="location">LOCATION</button>
+              <p>Offers real time location and the patient can send his current location as a message. If he/she is lost, there is a 'Take me Home' option.</p>
+            </li>
           </ul>
+          <p class="colorblind">*Also available for color-blind people</p>
         </nav>
       </div>
+
+      <div id="colors">
+        <div class="color" data-color="black" style="background-color: #333333"></div>
+        <div class="color" data-color="navy" style="background-color: #00303F"></div>
+        <div class="color" data-color="yellow" style="background-color: #F9DA24"></div>
+        <div class="color" data-color="salmon" style="background-color: #FE4446"></div>
+        <div class="color" data-color="green" style="background-color: #A2FAA3"></div>
+        <div class="color" data-color="orange" style="background-color: #FF5A09"></div>
+      </div>
+
+      <p id="rotate">Use mouse to rotate and zoom watch</p>
     </main>
 
 
@@ -23,6 +68,7 @@
     <script src="js/orbitControls.js"></script>
     <script src="js/JSONLoader.js"></script>
     <script src="js/ObjectLoader.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
 
@@ -33,7 +79,8 @@
       let camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 1000 );
 
 
-      let renderer = new THREE.WebGLRenderer( { antialias: true } );
+      let renderer = new THREE.WebGLRenderer( { antialias: true, wireframe: true, alpha: true } );
+      renderer.setClearColor( 0xffffff, 1 );
       renderer.setSize( width, height );
 
       container.appendChild( renderer.domElement );
@@ -47,27 +94,51 @@
 
       controls = new THREE.OrbitControls( camera, renderer.domElement );
 
-      camera.position.z = 15;
+      camera.position.z = 11;
 
       let loader = new THREE.ObjectLoader();
-      let watch;
+      let watch, strap;
+
       loader.load
       (
         'model/apple-watch.json',
         ( object ) => {
             watch = object;
+            strap = watch.getObjectByName('group').getObjectByName('group1').getObjectByName('Strap');
             object.position.z = 0;
             object.rotation.y += 90 * Math.PI / 180;
             scene.add( object );
           }
       );
 
+      const strapColors = {
+        black: 0x333333,
+        navy: 0x19405E,
+        yellow: 0xF9DA24,
+        salmon: 0xFE4446,
+        green: 0x84CF96,
+        orange: 0xFF5A09
+      }
+
+      const planeTextures = {
+        about: new THREE.TextureLoader( ).load( 'img/landing@3x.png' ),
+        home: new THREE.TextureLoader( ).load( 'img/home@3x.png' ),
+        time: new THREE.TextureLoader( ).load( 'img/timeAndDate@3x.png' ),
+        facts: new THREE.TextureLoader( ).load( 'img/facts@3x.png' ),
+        family: new THREE.TextureLoader( ).load( 'img/family_1@3x.png' ),
+        messages: new THREE.TextureLoader( ).load( 'img/messages@3x.png' ),
+        bot: new THREE.TextureLoader( ).load( 'img/bot@3x.png' ),
+        music: new THREE.TextureLoader( ).load( 'img/music@3x.png' ),
+        location: new THREE.TextureLoader( ).load( 'img/location@3x.png' ),
+        alerts: new THREE.TextureLoader( ).load( 'img/alerts@3x.png' )
+      }
+
       const planeGeom = new THREE.PlaneBufferGeometry( 3.9, 3.9, 32 );
-      let planeMat = new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'img/landing@3x.png' ), side: THREE.FrontSide } );
+      let planeMat = new THREE.MeshBasicMaterial( { map: planeTextures.about, side: THREE.FrontSide } );
       let plane = new THREE.Mesh( planeGeom, planeMat );
-      plane.position.z = 4.2;
+      plane.position.z = 4.15;
       plane.position.y = 0.56;
-      plane.rotation.x -= 10 * Math.PI / 180;
+      plane.rotation.x -= 8.9 * Math.PI / 180;
       scene.add( plane );
 
       // Draw scene
@@ -85,6 +156,32 @@
       };
       loop();
 
+    </script>
+
+    <script>
+      $(() => {
+        $( 'button' ).on( 'click', ( e ) => {
+          e.preventDefault();
+
+          const button = $( e.target );
+          const name = button.data( 'name' );
+          planeMat.map = planeTextures[ name ];
+
+          if( button.parent().hasClass( 'active' ) ) {
+            button.parent().removeClass( 'active' );
+          } else {
+            $( 'li.active' ).removeClass( 'active' );
+            button.parent().addClass( 'active' );
+          }
+        });
+
+        $( '.color' ).on( 'click', ( e ) => {
+          e.preventDefault();
+
+          const color =  $( e.target ).data( 'color' );
+          strap.material.color.setHex( strapColors[ color ] );
+        });
+      });
     </script>
 
   </body>
