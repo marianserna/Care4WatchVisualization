@@ -11,7 +11,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "concurrently --prefix \"[{name}]\" --names \"HTTP,CSS\" -c \"bgBlue.bold,bgMagenta.bold\" \"http-server\" \"npm run styles:watch\"",
+    "watch": "concurrently --prefix \"[{name}]\" --names \"HTTP,CSS\" -c \"bgBlue.bold,bgMagenta.bold\" \"http-server\" \"yarn run styles:watch\"",
     "styles": "stylus -u autoprefixer-stylus ./css/style.styl -o ./css/style.css",
     "styles:watch": "stylus -u autoprefixer-stylus -w ./css/style.styl -o ./css/style.css"
   },

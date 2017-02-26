@@ -5,10 +5,147 @@
   font-family: 'Overpass', sans-serif;
   font-size: 1rem;
 }
-main {
+section {
+  min-height: 100vh;
+  position: relative;
+  margin-bottom: 100px;
+}
+.name {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 3rem;
+  color: #9068be;
+}
+a:not(.home-image) {
+  color: #505050;
+  padding: 10px;
+  text-decoration: none;
+}
+a:not(.home-image):hover {
+  background-color: #3dd9d6;
+}
+.home-image {
+  border: none;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+.home-image img {
+  width: 40px;
+  height: 40px;
+}
+@media screen and (max-width: 836px) {
+  section {
+    margin-bottom: 60px;
+  }
+}
+.about-container {
+  height: 100vh;
+  padding: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.about-container p {
+  margin-bottom: 30px;
+  width: 50%;
+  line-height: 2rem;
+}
+.about-container .button-container {
+  width: 50%;
+  text-align: right;
+  margin-top: 20px;
+}
+.about-container .button-container a {
+  border: 2px solid #505050;
+  border-radius: 5px;
+  padding: 10px;
+}
+@media screen and (max-width: 836px) {
+  .about-container {
+    padding: 20px;
+  }
+  .about-container p {
+    width: 80%;
+  }
+  .about-container a {
+    margin-top: 15px;
+  }
+  .about-container .home {
+    display: none;
+  }
+}
+#intro .name {
+  opacity: 0;
+}
+#intro ul {
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#intro ul li {
+  list-style: none;
+  padding-left: 15px;
+}
+#intro ul li a {
+  color: #505050;
+  padding: 10px;
+  text-decoration: none;
+}
+#intro ul li a:hover {
+  background-color: #3dd9d6;
+}
+.intro-container {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.logo {
+  position: absolute;
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+}
+section#watch,
+section#tablet {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+section#tablet {
+  margin-bottom: 100px;
+}
+video {
+  width: 80vw;
 }
 #three-container {
   height: 100vh;
@@ -18,24 +155,30 @@ main {
   background-color: #fff;
   cursor: move;
 }
-#options-container {
+.options-container {
   overflow-y: scroll;
   height: 100vh;
   width: 20vw;
   background: #fff;
-  padding: 40px 10px;
+  padding: 0px 10px;
 }
-#options-container nav #logo {
+.options-container nav .name,
+.options-container nav .identifier {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-size: 3rem;
-  color: #a2faa3;
+  color: #9068be;
 }
-#options-container nav .functionality li {
+.options-container nav .identifier {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  color: #505050;
+}
+.options-container nav .functionality li {
   display: block;
   list-style: none;
 }
-#options-container nav .functionality li button {
+.options-container nav .functionality li button {
   width: 100%;
   display: block;
   margin-bottom: 10px;
@@ -46,22 +189,22 @@ main {
   border-bottom: 2px solid #c0bcb6;
   cursor: pointer;
 }
-#options-container nav .functionality li button:hover {
+.options-container nav .functionality li button:hover {
   background-color: #3dd9d6;
 }
-#options-container nav .functionality li button:focus {
+.options-container nav .functionality li button:focus {
   outline: 0;
 }
-#options-container nav .functionality li p {
+.options-container nav .functionality li p {
   overflow: hidden;
   height: 0;
   -webkit-transition: height 1s;
   transition: height 1s;
 }
-#options-container nav .functionality li.active p {
+.options-container nav .functionality li.active p {
   height: 200px;
 }
-#options-container nav p.colorblind {
+.options-container nav p.colorblind {
   padding-top: 20px;
   text-align: left;
 }
@@ -88,45 +231,91 @@ main {
   #rotate {
     display: none;
   }
-  main {
+  section#watch,
+  section#tablet {
     display: block;
   }
-  main ::-webkit-scrollbar {
+  section#watch ::-webkit-scrollbar,
+  section#tablet ::-webkit-scrollbar {
     display: none;
   }
-  main #three-container {
+  section#watch #three-container,
+  section#tablet #three-container,
+  section#watch video,
+  section#tablet video {
     width: 100%;
     position: absolute;
-    top: 25vh;
+    top: 30vh;
     height: 75vh;
   }
-  main #options-container {
+  section#watch .options-container,
+  section#tablet .options-container {
     position: absolute;
     height: 25vh;
-    padding-top: 10px;
     z-index: 20;
     width: 100%;
     top: 0;
     left: 0;
   }
-  main #options-container nav ::-webkit-scrollbar {
+  section#watch .options-container .functionality,
+  section#tablet .options-container .functionality,
+  section#watch .options-container .name,
+  section#tablet .options-container .name,
+  section#watch .options-container .colorblind,
+  section#tablet .options-container .colorblind,
+  section#watch .options-container .identifier,
+  section#tablet .options-container .identifier {
     display: none;
   }
-  main #options-container nav #logo {
+  section#watch .options-container .functionality #logo,
+  section#tablet .options-container .functionality #logo,
+  section#watch .options-container .name #logo,
+  section#tablet .options-container .name #logo,
+  section#watch .options-container .colorblind #logo,
+  section#tablet .options-container .colorblind #logo,
+  section#watch .options-container .identifier #logo,
+  section#tablet .options-container .identifier #logo {
     margin-top: 10px;
     margin-bottom: 10px;
   }
-  main #options-container nav .functionality {
+  section#watch .options-container .functionality .functionality,
+  section#tablet .options-container .functionality .functionality,
+  section#watch .options-container .name .functionality,
+  section#tablet .options-container .name .functionality,
+  section#watch .options-container .colorblind .functionality,
+  section#tablet .options-container .colorblind .functionality,
+  section#watch .options-container .identifier .functionality,
+  section#tablet .options-container .identifier .functionality {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     width: 100vw;
     overflow-x: scroll;
   }
-  main #options-container nav p.colorblind {
+  section#watch .options-container .functionality p.colorblind,
+  section#tablet .options-container .functionality p.colorblind,
+  section#watch .options-container .name p.colorblind,
+  section#tablet .options-container .name p.colorblind,
+  section#watch .options-container .colorblind p.colorblind,
+  section#tablet .options-container .colorblind p.colorblind,
+  section#watch .options-container .identifier p.colorblind,
+  section#tablet .options-container .identifier p.colorblind {
     display: none;
   }
-  main #options-container nav li.active p {
+  section#watch .options-container .functionality li.active p,
+  section#tablet .options-container .functionality li.active p,
+  section#watch .options-container .name li.active p,
+  section#tablet .options-container .name li.active p,
+  section#watch .options-container .colorblind li.active p,
+  section#tablet .options-container .colorblind li.active p,
+  section#watch .options-container .identifier li.active p,
+  section#tablet .options-container .identifier li.active p {
     display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  #three-container,
+  video {
+    top: 10vh;
   }
 }

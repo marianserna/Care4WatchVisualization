@@ -4,35 +4,118 @@
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Overpass" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Care4 Visualization</title>
+    <title>Care4</title>
   </head>
+
   <body>
-    <main>
-      <div id="three-container"></div>
-      <div id="options-container">
+    <section id="intro">
+      <div class="intro-container">
+        <div class="name">CARE4</div>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#tablet">Tablet App</a></li>
+          <li><a href="#watch">Watch</a></li>
+        </ul>
+      </div>
+
+    </section>
+
+    <section id="about">
+      <div class="about-container">
+        <div class="home">
+          <a href="#" class="home-image"><img src="img/home.png" alt="home-icon"></a>
+        </div>
+        <p>CARE4 is a product created to serve victims of Alzheimer’s disease.
+          More than a simple geolocation device, it is meant to show the patient that
+          somebody cares deeply about him/her and that there’s always somebody
+          he/she can get in touch with.
+        </p>
+        <p>
+          Our product will be developed thinking not only in the patient but also
+          about its relatives who invest all of their time, energy, and love taking care
+          of him/her. CARE4 is meant to alleviate somewhat the constant worry
+          about the patient’s condition. It does not replace physical presence;
+          however, it allows the patient not to feel that all his/her independence and
+          privacy are lost due to the illness.
+        </p>
+        <div class="button-container">
+          <a href="http://show.marianserna.com/CARE4Concept.pdf" target="_blank">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="tablet">
+      <div class="options-container">
         <nav>
-          <div id="logo">CARE4</div>
+          <div class="name">CARE4</div>
+          <div class="identifier">- tablet app -</div>
           <ul class="functionality">
             <li>
-              <button type="button" data-name="about">ABOUT</button>
-              <p>Care4 Watch is a device designed to make Alzheimer patients feel closer to their family members.</p>
+              <button type="button" data-name="health">HEALTH</button>
+              <p>Quick preview of vital signs with additional features to control mental health.</p>
             </li>
             <li>
-              <button type="button" data-name="home">HOME</button>
-              <p>The watch provides a customizable interface with options adaptable to the needs of the patient.</p>
+              <button type="button" data-name="records">MEDICAL RECORDS</button>
+              <p>Control patient's medical history on the tablet for easy access.</p>
             </li>
+            <li>
+              <button type="button" data-name="geo">GEOLOCATION</button>
+              <p>Real time information about patient's location plus potential danger alerts.</p>
+            </li>
+            <li>
+              <button type="button" data-name="calendar">CALENDAR</button>
+              <p>Keep track of events and appointments and get alerts when they are about to happen.</p>
+            </li>
+            <li>
+              <button type="button" data-name="prescription">PRESCRIPTION</button>
+              <p>An easy way to control medication intake and track its effects.</p>
+            </li>
+            <li>
+              <button type="button" data-name="messages">MESSAGES</button>
+              <p>Send quick messages to the patient or relevant contacts.</p>
+            </li>
+            <li>
+              <button type="button" data-name="emergency">EMERGENCY</button>
+              <p>Quick access to relevant emergency contacts.</p>
+            </li>
+            <li>
+              <button type="button" data-name="custom">CUSTOMIZE</button>
+              <p>The settings tab allows the user to customize functionality and information that will be populated both in the tablet and the watch.</p>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div id="video">
+        <video autoplay="true" loop="true">
+          <source type="video/mp4" src="video/Care4Final.mp4"/>
+        </video>
+      </div>
+    </section>
+
+    <section id="watch">
+      <div id="three-container"></div>
+      <div class="options-container">
+        <nav>
+          <div class="name">CARE4</div>
+          <div class="identifier">- watch -</div>
+          <ul class="functionality">
             <li>
               <button type="button" data-name="facts">REMEMBER</button>
               <p>The caregiver may introduce facts about the patient's life for moments when he/she doesn't remember.</p>
             </li>
             <li>
-              <button type="button" data-name="family">FAMILY</button>
-              <p>For the patient to feel constantly connected to his/her family, pictures can be loaded into the phone.</p>
+              <button type="button" data-name="messages">MESSAGES</button>
+              <p>The patient has the possibility of sending voice messages tho his/her loved ones or caregiver.</p>
             </li>
             <li>
-              <button type="button" data-name="messages">MESSAGES</button>
-              <p>The patient has the possibility of sending short written and/or voice messages tho his/her loved ones.</p>
+              <button type="button" data-name="family">CIRCLES</button>
+              <p>For the patient to feel constantly connected to his/her family, friends, and doctors, pictures can be loaded into the watch.</p>
+            </li>
+            <li>
+              <button type="button" data-name="location">LOCATION</button>
+              <p>Offers real time location. If he/she is lost, there is a 'Take me Home' option which will also send an alert to the caregiver.</p>
             </li>
             <li>
               <button type="button" data-name="bot">ASK</button>
@@ -43,8 +126,8 @@
               <p>Music has been proved to have a positive effect on people's memory. The patient can have access to a number of his/her favourite songs.</p>
             </li>
             <li>
-              <button type="button" data-name="location">LOCATION</button>
-              <p>Offers real time location and the patient can send his current location as a message. If he/she is lost, there is a 'Take me Home' option.</p>
+              <button type="button" data-name="home">IMAGES/VIDEO</button>
+              <p>Images and video to boost memories.</p>
             </li>
           </ul>
           <p class="colorblind">*Also available for color-blind people</p>
@@ -61,128 +144,20 @@
       </div>
 
       <p id="rotate">Use mouse to rotate and zoom watch</p>
-    </main>
+    </section id="watch">
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"></script>
     <script src="js/orbitControls.js"></script>
     <script src="js/JSONLoader.js"></script>
     <script src="js/ObjectLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-
-    <script type="text/javascript">
-
-      const container = document.getElementById('three-container');
-      let width = container.offsetWidth;
-      let height = container.offsetHeight;
-      let scene = new THREE.Scene();
-      let camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 1000 );
-
-
-      let renderer = new THREE.WebGLRenderer( { antialias: true, wireframe: true, alpha: true } );
-      renderer.setClearColor( 0xffffff, 1 );
-      renderer.setSize( width, height );
-
-      container.appendChild( renderer.domElement );
-
-      // Resize
-      window.addEventListener( 'resize', () => {
-        renderer.setSize( container.offsetWidth, container.offsetHeight );
-        camera.aspect = container.offsetWidth / container.offsetHeight;
-        camera.updateProjectionMatrix();
-      } );
-
-      controls = new THREE.OrbitControls( camera, renderer.domElement );
-
-      camera.position.z = 11;
-
-      let loader = new THREE.ObjectLoader();
-      let watch, strap;
-
-      loader.load
-      (
-        'model/apple-watch.json',
-        ( object ) => {
-            watch = object;
-            strap = watch.getObjectByName('group').getObjectByName('group1').getObjectByName('Strap');
-            object.position.z = 0;
-            object.rotation.y += 90 * Math.PI / 180;
-            scene.add( object );
-          }
-      );
-
-      const strapColors = {
-        black: 0x333333,
-        navy: 0x19405E,
-        yellow: 0xF9DA24,
-        salmon: 0xFE4446,
-        green: 0x84CF96,
-        orange: 0xFF5A09
-      }
-
-      const planeTextures = {
-        about: new THREE.TextureLoader( ).load( 'img/landing@3x.png' ),
-        home: new THREE.TextureLoader( ).load( 'img/home@3x.png' ),
-        time: new THREE.TextureLoader( ).load( 'img/timeAndDate@3x.png' ),
-        facts: new THREE.TextureLoader( ).load( 'img/facts@3x.png' ),
-        family: new THREE.TextureLoader( ).load( 'img/family_1@3x.png' ),
-        messages: new THREE.TextureLoader( ).load( 'img/messages@3x.png' ),
-        bot: new THREE.TextureLoader( ).load( 'img/bot@3x.png' ),
-        music: new THREE.TextureLoader( ).load( 'img/music@3x.png' ),
-        location: new THREE.TextureLoader( ).load( 'img/location@3x.png' ),
-        alerts: new THREE.TextureLoader( ).load( 'img/alerts@3x.png' )
-      }
-
-      const planeGeom = new THREE.PlaneBufferGeometry( 3.9, 3.9, 32 );
-      let planeMat = new THREE.MeshBasicMaterial( { map: planeTextures.about, side: THREE.FrontSide } );
-      let plane = new THREE.Mesh( planeGeom, planeMat );
-      plane.position.z = 4.15;
-      plane.position.y = 0.56;
-      plane.rotation.x -= 8.9 * Math.PI / 180;
-      scene.add( plane );
-
-      // Draw scene
-      let render = () => {
-        renderer.render( scene, camera );
-      };
-
-
-      // Run loop (update, render, repeat)
-      let loop = () => {
-
-        requestAnimationFrame( loop );
-
-        render();
-      };
-      loop();
-
-    </script>
-
-    <script>
-      $(() => {
-        $( 'button' ).on( 'click', ( e ) => {
-          e.preventDefault();
-
-          const button = $( e.target );
-          const name = button.data( 'name' );
-          planeMat.map = planeTextures[ name ];
-
-          if( button.parent().hasClass( 'active' ) ) {
-            button.parent().removeClass( 'active' );
-          } else {
-            $( 'li.active' ).removeClass( 'active' );
-            button.parent().addClass( 'active' );
-          }
-        });
-
-        $( '.color' ).on( 'click', ( e ) => {
-          e.preventDefault();
-
-          const color =  $( e.target ).data( 'color' );
-          strap.material.color.setHex( strapColors[ color ] );
-        });
-      });
-    </script>
+    <script src="js/watch.js"></script>
+    <script src="js/intro.js"></script>
+    <script src="https://cdn.jsdelivr.net/afterglow/0.4.1/afterglow.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script src="js/scroll.js"></script>
 
   </body>
 </html>

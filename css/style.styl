@@ -5,127 +5,37 @@
   font-family 'Overpass', sans-serif
   font-size 1rem
 
-main
-  display flex
+section
+  min-height 100vh
+  position relative
+  margin-bottom 100px
 
-#three-container
-  height 100vh
-  width 80vw
+.name
+  text-align center
+  margin-bottom 30px
+  font-size 3rem
+  color #9068BE
 
-  canvas
-    background-color #ffffff
-    cursor move
+a:not(.home-image)
+  color #505050
+  padding 10px
+  text-decoration none
 
-#options-container
-  overflow-y scroll
-  height 100vh
-  width 20vw
-  background #fff
-  padding 40px 10px
+  &:hover
+    background-color #3DD9D6
 
-  nav
-    #logo
-      text-align center
-      margin-bottom 30px
-      font-size 3rem
-      color #A2FAA3
-
-    .functionality
-      li
-        display block
-        list-style none
-
-        button
-          width 100%
-          display block
-          margin-bottom 10px
-          padding-top 5px
-          background-color transparent
-          color #505050
-          border none
-          border-bottom 2px solid #C0BCB6
-          cursor pointer
-
-          &:hover
-            background-color #3DD9D6
-
-          &:focus
-            outline 0
-
-        p
-          overflow hidden
-          height 0
-          transition height 1s
-
-        &.active p
-          height 200px
-
-
-    p.colorblind
-      padding-top 20px
-      text-align left
-
-#colors
-  z-index 10
+.home-image
+  border none
   position absolute
-  left 15px
-  bottom 15px
-  cursor pointer
+  top 30px
+  right 30px
 
-  .color
-    border-radius 100%
-    height 25px
-    width 25px
-    margin-bottom 5px
-
-#rotate
-  z-index 15
-  position absolute
-  left 60px
-  bottom 15px
+  img
+    width 40px
+    height 40px
 
 @media screen and (max-width: 836px)
-  #rotate
-    display none
+  section
+    margin-bottom 60px
 
-  main
-    display block
-
-    ::-webkit-scrollbar
-      display none
-
-    #three-container
-      width 100%
-      position absolute
-      top 25vh
-      height 75vh
-
-    #options-container
-      position absolute
-      height 25vh
-      padding-top 10px
-      z-index 20
-      width 100%
-      top 0
-      left 0
-
-      nav
-        ::-webkit-scrollbar
-          display none
-
-        #logo
-          margin-top 10px
-          margin-bottom 10px
-
-        .functionality
-          display flex
-          width 100vw
-          overflow-x scroll
-
-        p.colorblind
-          display none
-
-        li
-
-          &.active p
-            display none
+@import 'components/*'

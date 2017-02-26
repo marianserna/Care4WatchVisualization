@@ -1,0 +1,137 @@
+section#watch, section#tablet
+  display flex
+
+section#tablet
+  margin-bottom 100px
+
+video
+  width 80vw
+
+#three-container
+  height 100vh
+  width 80vw
+
+  canvas
+    background-color #ffffff
+    cursor move
+
+.options-container
+  overflow-y scroll
+  height 100vh
+  width 20vw
+  background #fff
+  padding 0px 10px
+
+  nav
+    .name, .identifier
+      text-align center
+      margin-bottom 10px
+      font-size 3rem
+      color #9068BE
+
+    .identifier
+      font-size 1.5rem
+      margin-bottom 30px
+      color #505050
+
+    .functionality
+      li
+        display block
+        list-style none
+
+        button
+          width 100%
+          display block
+          margin-bottom 10px
+          padding-top 5px
+          background-color transparent
+          color #505050
+          border none
+          border-bottom 2px solid #C0BCB6
+          cursor pointer
+
+          &:hover
+            background-color #3DD9D6
+
+          &:focus
+            outline 0
+
+        p
+          overflow hidden
+          height 0
+          transition height 1s
+
+        &.active p
+          height 200px
+
+
+    p.colorblind
+      padding-top 20px
+      text-align left
+
+#colors
+  z-index 10
+  position absolute
+  left 15px
+  bottom 15px
+  cursor pointer
+
+  .color
+    border-radius 100%
+    height 25px
+    width 25px
+    margin-bottom 5px
+
+#rotate
+  z-index 15
+  position absolute
+  left 60px
+  bottom 15px
+
+@media screen and (max-width: 836px)
+  #rotate
+    display none
+
+  section#watch, section#tablet
+    display block
+
+    ::-webkit-scrollbar
+      display none
+
+    #three-container, video
+      width 100%
+      position absolute
+      top 30vh
+      height 75vh
+
+    .options-container
+      position absolute
+      height 25vh
+      z-index 20
+      width 100%
+      top 0
+      left 0
+
+      .functionality, .name, .colorblind, .identifier
+        display none
+
+        #logo
+          margin-top 10px
+          margin-bottom 10px
+
+        .functionality
+          display flex
+          width 100vw
+          overflow-x scroll
+
+        p.colorblind
+          display none
+
+        li
+
+          &.active p
+            display none
+
+@media screen and (max-width: 500px)
+  #three-container, video
+    top 10vh
