@@ -61,7 +61,7 @@
   // }
 
   let video = document.createElement('video');
-  video.setAttribute('src', 'video/watchNoMockup.mp4');
+  video.setAttribute('src', 'video/watchNomockup.mp4');
   video.setAttribute('loop', true);
   video.play();
   let texture = new THREE.VideoTexture( video );
