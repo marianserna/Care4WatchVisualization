@@ -34,6 +34,23 @@ a:not(.home-image):hover {
   width: 40px;
   height: 40px;
 }
+footer {
+  width: 100vw;
+  height: 60px;
+  background-color: #3dd9d6;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+footer p#footer {
+  color: #fff;
+}
 @media screen and (max-width: 836px) {
   section {
     margin-bottom: 60px;
